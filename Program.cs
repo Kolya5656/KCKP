@@ -67,7 +67,7 @@ namespace KCKP
                             break;
                     }
                     Console.WriteLine("===========================================================");
-                    GaussZeidel test = new GaussZeidel(a, b, 500, n, x);
+                    GaussZeidel test = new(a, b, 500, n, x);
                     bool IsDiagonal = test.DiagonallyDominant();
                     if (IsDiagonal == true)
                     {
@@ -82,7 +82,7 @@ namespace KCKP
                     {
                         Console.WriteLine("X" + (j + 1) + " = " + test.roots[j]);
                     }
-                    Console.WriteLine("The number of iterations: " + test.k + "\n===========================================================\nPress Esc to exit or any key to continue");
+                    Console.WriteLine("The number of iterations: " + test.iteratnionNumber + "\n===========================================================\nPress Esc to exit or any key to continue");
                 }
                 catch (Exception ex)
                 {

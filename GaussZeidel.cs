@@ -8,29 +8,31 @@ namespace KCKP
 {
     public class GaussZeidel
     {
-        public static double epsilon = 0.01; //точность вычисления
-        public int n, k, N; //N -допустимое число итераций, n - размерность квадратной матрицы коэффицентов, k-количество итераций
+        private static double epsilon = 0.01; //точность вычисления
+        public int matrixSize, iteratnionNumber, N; //N -допустимое число итераций, matrixSize - размерность квадратной матрицы коэффицентов, iteratnionNumber-количество итераций
         public double s, Xi, diff = 1; //s - сумма, величина погрешности
         public double[,] matrix; //матрица коэффицентов
         public double[] value; //матрица значений
         public double[] roots; //матрица корней
         public bool diagonal;
 
+        public static double Epsilon { get => epsilon; set => epsilon = value; }
+
         public GaussZeidel(double[,] matrix, double[] value, int N, int n, double[] roots)
         {
             this.matrix = matrix;
             this.N = N;
             this.value = value;
-            this.n = n;
+            this.matrixSize = n;
             this.roots = roots;
         }
 
         public bool DiagonallyDominant()
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < matrixSize; i++)
             {
                 double sum = 0;
-                for (int j = 0; j < n; j++)
+                for (int j = 0; j < matrixSize; j++)
                 {
                     if (i != j)
                     {
@@ -52,14 +54,14 @@ namespace KCKP
 
         public void algoritm()
         {
-            k = 0;
-            while ((k <= N) && (diff >= epsilon))
+            iteratnionNumber = 0;
+            while ((iteratnionNumber <= N) && (diff >= Epsilon))
             {
-                k = k + 1;
-                for (int i = 0; i < n; i++)
+                iteratnionNumber = iteratnionNumber + 1;
+                for (int i = 0; i < matrixSize; i++)
                 {
                     s = 0;
-                    for (int j = 0; j < n; j++)
+                    for (int j = 0; j < matrixSize; j++)
                     {
                         if (i != j)
                         {
